@@ -1,1 +1,60 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+
+:root {
+  /* Шрифты */
+  --main-font: 'Inter', sans-serif;
+  --accent-font: 'Press Start 2P', fantasy;
+  
+  /* Настройки вариативного шрифта Inter */
+  --text-font-weight: 400;
+  --title-font-weight: 700;
+  --card-title-font-weight: 785;
+  
+  /* Вес через font-variation-settings */
+  --text-weight-setting: 'wght' var(--text-font-weight);
+  --title-weight-setting: 'wght' var(--title-font-weight);
+  --card-title-weight-setting: 'wght' var(--card-title-font-weight);
+  
+  /* Градиенты для фона */
+  --background-gradient: 
+    repeating-linear-gradient(
+      90deg,
+      #d3d3d3 0 2px,
+      rgba(0, 0, 0, 0) 2px 4px
+    ),
+    repeating-linear-gradient(
+      180deg,
+      #d3d3d3 0 2px,
+      rgba(0, 0, 0, 0) 2px 4px
+    ),
+    linear-gradient(
+      180deg,
+      #e7e7e7 0.01%,
+      #1a1a1a
+    );
+  
+  /* Размеры и отступы */
+  --content-width: clamp(23.438rem, 16.373rem + 30.14vw, 43.75rem);
+  --header-padding: clamp(7.5rem, 7.148rem + 1.5vw, 8.5rem) 0 1.563rem;
+  --logo-font-size: clamp(3.063rem, 2.71rem + 1.5vw, 4.063rem);
+  --title-font-size: clamp(0.875rem, 0.677rem + 0.85vw, 1.438rem);
+  --logo-gap: 1.25rem;
+  
+  /* Карточки */
+  --card-padding: 1.563rem;
+  --card-gap: 1.563rem;
+  --button-padding: 0.625rem 1.063rem;
+  --card-bg-color: #fff;
+  --card-border: 2px solid #000;
+  --card-shadow: 2px 2px 0 #000;
+  
+  /* Цвета */
+  --accent-color: #000;
+  --color-text: #000;
+  
+  /* Анимация сердца */
+  --contour-color: #000;
+  --animation-fill-color: #FF0000;
+  --color-heart-cntr: var(--contour-color);
+  --color-heart-mb: var(--animation-fill-color);
+}
