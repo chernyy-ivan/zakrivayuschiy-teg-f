@@ -133,11 +133,20 @@
   font-size: 14px;
   opacity: 0.5;
   mix-blend-mode: hard-light;
+  color: var(--watermark-text-color, #000000); /* Чёрный цвет текста */
   text-shadow:
-    -1px 0 var(--card-bg-color, #fff),
-    0 1px var(--card-bg-color, #fff),
-    1px 0 var(--card-bg-color, #fff),
-    0 -1px var(--card-bg-color, #fff);
+    -1px 0 var(--watermark-stroke-color, #FFFFFF),
+    0 1px var(--watermark-stroke-color, #FFFFFF),
+    1px 0 var(--watermark-stroke-color, #FFFFFF),
+    0 -1px var(--watermark-stroke-color, #FFFFFF);
+}
+
+@supports (-webkit-text-stroke: 1px black) or (text-stroke: 1px black) {
+  .watermark {
+    -webkit-text-stroke: 1px var(--watermark-stroke-color, #FFFFFF); /* Белая обводка */
+    text-stroke: 1px var(--watermark-stroke-color, #FFFFFF); /* Белая обводка */
+    text-shadow: none;
+  }
 }
 
 .card__text {
