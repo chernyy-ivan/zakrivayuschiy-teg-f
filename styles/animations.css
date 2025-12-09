@@ -1,15 +1,11 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like... */
-
 .like-icon {
   transform-origin: center;
 }
 
-/* Искры по умолчанию скрыты */
 .sparks {
   opacity: 0;
 }
 
-/* Базовые переходы */
 .contour {
   fill: var(--contour-color, #000000);
   transition: fill 0.1s linear;
@@ -25,7 +21,6 @@
   transition: fill 0.3s linear 0.03s;
 }
 
-/* Hover */
 .card__icon-button:hover .core {
   fill: var(--contour-color, #000000);
   transition: fill 0.3s linear;
@@ -36,7 +31,6 @@
   transition: fill 0.3s linear 0.05s;
 }
 
-/* Active (нажатие) */
 .card__icon-button:is(:active, :focus-visible) .core {
   fill: var(--heart-color, #ff0000);
   transition: fill 0.3s linear;
@@ -47,7 +41,6 @@
   transition: fill 0.3s linear 0.05s;
 }
 
-/* Лайкнутое состояние */
 .like-icon.is-liked .core {
   fill: var(--heart-color, #ff0000);
   transition: fill 0.3s linear;
@@ -63,23 +56,23 @@
   transition: fill 0.3s linear 0.06s;
 }
 
-/* === ИСКРЫ — РАБОЧИЙ ВАРИАНТ === */
 .like-icon.is-liked .sparks {
   animation: sparks 0.3s ease-in 0.3s;
 }
 
-/* Пульсация сердца */
 .like-icon.is-liked .heart {
   animation: heartbeat 0.3s ease-in 0.1s;
 }
 
-/* === АНИМАЦИИ === */
 @keyframes heartbeat {
-  from { transform: scale(1); }
-  to   { transform: scale(1.25); }
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
 }
 
-/* Главная магия: одна анимация, которая сама себя гасит */
 @keyframes sparks {
   0% {
     opacity: 0;
