@@ -1,128 +1,96 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like... */
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимационного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
-/* Начальное состояние иконки сердца */
 .like-icon {
   transform-origin: center;
 }
 
-/* Искры скрыты по умолчанию */
+/* Искры по умолчанию скрыты */
 .sparks {
   opacity: 0;
-  fill: var(--animation-fill-color, #FF0000);
 }
 
-/* ===== СОСТОЯНИЕ ПО УМОЛЧАНИЮ ===== */
-
-/* Контур сердца - быстрый переход */
+/* Базовые переходы */
 .contour {
-  fill: var(--contour-color, #000);
+  fill: var(--contour-color, #000000);
   transition: fill 0.1s linear;
 }
 
-/* Основное тело сердца - средний переход, без задержки */
 .main-body {
   fill: transparent;
-  transition: fill 0.3s;
+  transition: fill 0.3s linear;
 }
 
-/* Сердцевина - средний переход с задержкой */
 .core {
   fill: transparent;
-  transition: fill 0.3s 0.03s;
+  transition: fill 0.3s linear 0.03s;
 }
 
-/* ===== СОСТОЯНИЕ HOVER (при наведении) ===== */
-
-/* Сердцевина при наведении - без задержки */
+/* Hover */
 .card__icon-button:hover .core {
-  fill: var(--contour-color, #000);
-  transition: fill 0.3s;
+  fill: var(--contour-color, #000000);
+  transition: fill 0.3s linear;
 }
 
-/* Основное тело при наведении - с задержкой */
 .card__icon-button:hover .main-body {
-  fill: var(--contour-color, #000);
-  transition: fill 0.3s 0.05s;
+  fill: var(--contour-color, #000000);
+  transition: fill 0.3s linear 0.05s;
 }
 
-/* ===== СОСТОЯНИЕ ACTIVE (при нажатии и удержании) ===== */
-
-/* Сердцевина при активном нажатии - красная, без задержки */
-.card__icon-button:active .core {
-  fill: var(--animation-fill-color, #FF0000);
-  transition: fill 0.3s;
+/* Active (нажатие) */
+.card__icon-button:is(:active, :focus-visible) .core {
+  fill: var(--heart-color, #ff0000);
+  transition: fill 0.3s linear;
 }
 
-/* Основное тело при активном нажатии - красная, с задержкой */
-.card__icon-button:active .main-body {
-  fill: var(--animation-fill-color, #FF0000);
-  transition: fill 0.3s 0.05s;
+.card__icon-button:is(:active, :focus-visible) .main-body {
+  fill: var(--heart-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
 }
 
-/* ===== СОСТОЯНИЕ LIKED (после клика) ===== */
-
-/* Сердцевина лайкнутая - красная, без задержки */
+/* Лайкнутое состояние */
 .like-icon.is-liked .core {
-  fill: var(--animation-fill-color, #FF0000);
-  transition: fill 0.3s;
+  fill: var(--heart-color, #ff0000);
+  transition: fill 0.3s linear;
 }
 
-/* Основное тело лайкнутое - красная, с задержкой */
 .like-icon.is-liked .main-body {
-  fill: var(--animation-fill-color, #FF0000);
-  transition: fill 0.3s 0.05s;
+  fill: var(--heart-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
 }
 
-/* Контур лайкнутый - красная, с большей задержкой */
 .like-icon.is-liked .contour {
-  fill: var(--animation-fill-color, #FF0000);
-  transition: fill 0.3s 0.06s;
+  fill: var(--heart-color, #ff0000);
+  transition: fill 0.3s linear 0.06s;
 }
 
-/* Искры лайкнутые - красные */
+/* === ИСКРЫ — РАБОЧИЙ ВАРИАНТ === */
 .like-icon.is-liked .sparks {
-  fill: var(--animation-fill-color, #FF0000);
+  animation: sparks 0.3s ease-in 0.3s;
 }
 
-/* ===== KEYFRAMES ДЛЯ АНИМАЦИЙ ===== */
-
-/* Масштабирование сердца при лайке */
-@keyframes scale-animation {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.25);
-  }
+/* Пульсация сердца */
+.like-icon.is-liked .heart {
+  animation: heartbeat 0.3s ease-in 0.1s;
 }
 
-/* Появление искр при лайке */
-@keyframes spark-animation {
+/* === АНИМАЦИИ === */
+@keyframes heartbeat {
+  from { transform: scale(1); }
+  to   { transform: scale(1.25); }
+}
+
+/* Главная магия: одна анимация, которая сама себя гасит */
+@keyframes sparks {
   0% {
     opacity: 0;
+    fill: var(--heart-color, #ff0000);
+  }
+  50% {
+    opacity: 1;
+    fill: var(--heart-color, #ff0000);
   }
   100% {
-    opacity: 1;
+    opacity: 0;
+    fill: var(--heart-color, #ff0000);
   }
-}
-
-/* ===== АНИМАЦИИ ПРИ ЛАЙКЕ ===== */
-
-/* Масштабирование сердца - начинается через 0.1s, длится 0.3s */
-.like-icon.is-liked .heart {
-  animation: scale-animation 0.3s 0.1s ease-in;
-}
-
-/* Появление искр - начинается через 0.3s, длится 0.3s */
-.like-icon.is-liked .sparks {
-  animation: spark-animation 0.3s 0.3s ease-in;
 }
