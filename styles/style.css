@@ -13,7 +13,6 @@
   min-block-size: 100dvb;
   font-family: var(--main-font);
   font-variation-settings: var(--text-weight-setting);
-  background-color: #000;
   background-image: var(--background-gradient);
   background-size: cover;
   background-attachment: fixed;

@@ -20,12 +20,12 @@
     repeating-linear-gradient(
       90deg,
       #d3d3d3 0 2px,
-      rgba(0, 0, 0, 0) 2px 4px
+      transparent 2px 4px
     ),
     repeating-linear-gradient(
       180deg,
       #d3d3d3 0 2px,
-      rgba(0, 0, 0, 0) 2px 4px
+      transparent 2px 4px
     ),
     linear-gradient(
       180deg,
@@ -55,6 +55,8 @@
   /* Анимация сердца */
   --contour-color: #000;
   --animation-fill-color: #FF0000;
-  --color-heart-cntr: var(--contour-color);
-  --color-heart-mb: var(--animation-fill-color);
+  
+  /* Водяные знаки */
+  --watermark-text-color: #000000;
+  --watermark-stroke-color: #FFFFFF;
 }
