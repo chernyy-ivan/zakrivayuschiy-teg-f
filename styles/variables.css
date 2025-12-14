@@ -8,7 +8,7 @@
   /* Настройки вариативного шрифта Inter */
   --text-font-weight: 400;
   --title-font-weight: 700;
-  --card-title-font-weight: 785;
+  --card-title-font-weight: 715;
   
   /* Вес через font-variation-settings */
   --text-weight-setting: 'wght' var(--text-font-weight);
